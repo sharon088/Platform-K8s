@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App Deployment Manager</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Weather App Deployment Manager</h1>
+        
+        <!-- Create Namespace -->
+        <div class="section">
+            <h2>Create Namespace</h2>
+            <form id="createForm">
+                <input type="text" id="namespaceInput" placeholder="Enter namespace name" required>
+                <button type="submit">Create</button>
+            </form>
+            <p id="createMessage"></p>
+        </div>
+        
+        <!-- Manage Namespaces -->
+        <div class="section">
+            <h2>Manage Namespaces</h2>
+            <select id="namespaceSelect">
+                <option value="" disabled selected>Select a namespace</option>
+                {% for namespace in namespaces %}
+                <option value="{{ namespace }}">{{ namespace }}</option>
+                {% endfor %}
+            </select>
+            <input type="text" id="imageInput" placeholder="Enter image tag or URL (e.g., dockerhub/imagename:tag)" required>
+            <button id="deployButton">Deploy App</button>
+            <button id="destroyButton">Destroy Namespace</button>
+        </div>
+
+        
+        <!-- Check Status -->
+        <div class="section">
+            <h2>Check Status</h2>
+            <select id="namespaceSelectStatus">
+                <option value="" disabled selected>Select a namespace</option>
+                {% for namespace in namespaces %}
+                <option value="{{ namespace }}">{{ namespace }}</option>
+                {% endfor %}
+            </select>
+            <button id="statusButton">Check Status</button>
+            <div id="statusResults"></div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

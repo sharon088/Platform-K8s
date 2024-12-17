@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-platform-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-platform-app
+  template:
+    metadata:
+      labels:
+        app: k8s-platform-app
+    spec:
+      serviceAccountName: platform-app-sa
+      containers:
+        - name: k8s-platform-app
+          image: sharon088/k8s-platform-app:latest
+          ports:
+            - containerPort: 5000
+
+---
