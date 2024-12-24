@@ -1,4 +1,5 @@
 Kubernetes Platform App
+
 This project is a web application built using Flask and Kubernetes Python Client that allows users to manage Kubernetes namespaces, deploy applications, and monitor pod statuses. The app is packaged as a Docker container and deployed to Kubernetes using a set of manifests for managing access, services, and deployments.
 
 Prerequisites
@@ -8,19 +9,6 @@ Docker for containerizing the application.
 Kubernetes cluster (e.g., Minikube, or a cloud provider like AWS, GCP, Azure).
 Kubectl for interacting with the Kubernetes cluster.
 Helm (optional) for managing Kubernetes charts.
-
-Project Structure
-.
-├── app.py                  # Flask application
-├── Dockerfile              # Multi-stage Dockerfile
-├── requirements.txt        # Python dependencies
-├── k8s/                    # Kubernetes manifests
-│   ├── clusterrole.yaml    # ClusterRole definition
-│   ├── clusterrolebinding.yaml  # ClusterRoleBinding definition
-│   ├── deployment.yaml     # Deployment definition
-│   ├── service.yaml        # Service definition
-│   └── serviceaccount.yaml # ServiceAccount definition
-└── README.md               # Project README
 
 Features
 . Namespace Management: Create and delete Kubernetes namespaces.
