@@ -1,8 +1,8 @@
-Kubernetes Platform App
+Kubernetes Platform App:
 
 This project is a web application built using Flask and Kubernetes Python Client that allows users to manage Kubernetes namespaces, deploy applications, and monitor pod statuses. The app is packaged as a Docker container and deployed to Kubernetes using a set of manifests for managing access, services, and deployments.
 
-Prerequisites
+Prerequisites:
 Before setting up this project, ensure you have the following installed:
 
 Docker for containerizing the application.
@@ -10,13 +10,13 @@ Kubernetes cluster (e.g., Minikube, or a cloud provider like AWS, GCP, Azure).
 Kubectl for interacting with the Kubernetes cluster.
 Helm (optional) for managing Kubernetes charts.
 
-Features
+Features:
 Namespace Management: Create and delete Kubernetes namespaces.
 App Deployment: Deploy and update applications in Kubernetes.
 Service Exposure: Expose applications via NodePort.
 Pod Monitoring: Check the status of pods in a specific namespace.
 
-Installation
+Installation:
 1. Clone the Repository
    git clone https://github.com/sharon088/Platform-K8s.git
    cd Platform-K8s
