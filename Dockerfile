@@ -4,7 +4,7 @@ FROM python:3.12-slim AS build
 WORKDIR /app
 
 # Copy requirements and install dependencies
-COPY requirements.txt /app
+COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime
@@ -16,13 +16,11 @@ WORKDIR /platform
 COPY --from=build /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
 
 # Copy application code (static files, templates, and main app file)
-COPY static ./static
-COPY templates ./templates
-COPY app.py .
+COPY --from=build /app /platform
 
 # Expose Flask's default port
 EXPOSE 5000
 
-# Command to run the Flask app
-CMD ["python", "app.py"]
+# Command to run the Flask app using Gunicorn (WSGI server)
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
 
