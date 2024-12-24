@@ -4,7 +4,7 @@ metadata:
   name: k8s-platform-app
   namespace: default
 spec:
-  replicas: 1
+  replicas: 2 
   selector:
     matchLabels:
       app: k8s-platform-app
@@ -16,8 +16,6 @@ spec:
       serviceAccountName: platform-app-sa
       containers:
         - name: k8s-platform-app
-          image: sharon088/k8s-platform-app:latest
+          image: sharon088/k8s-platform-app:v1.0.0 
           ports:
             - containerPort: 5000
-
----
