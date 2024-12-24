@@ -11,10 +11,10 @@ Kubectl for interacting with the Kubernetes cluster.
 Helm (optional) for managing Kubernetes charts.
 
 Features
-. Namespace Management: Create and delete Kubernetes namespaces.
-. App Deployment: Deploy and update applications in Kubernetes.
-. Service Exposure: Expose applications via NodePort.
-. Pod Monitoring: Check the status of pods in a specific namespace.
+Namespace Management: Create and delete Kubernetes namespaces.
+App Deployment: Deploy and update applications in Kubernetes.
+Service Exposure: Expose applications via NodePort.
+Pod Monitoring: Check the status of pods in a specific namespace.
 
 Installation
 1. Clone the Repository
