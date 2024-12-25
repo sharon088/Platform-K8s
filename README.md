@@ -1,4 +1,4 @@
-# Kubernetes Platform App:
+# Kubernetes Platform App
 
 
 
