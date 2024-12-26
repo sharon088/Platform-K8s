@@ -43,3 +43,40 @@ cd kubernetes-platform-app
 ### 2. Clone the repository
 Create a virtual environment (optional but recommended) and install the required Python packages:
 
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+pip install -r requirements.txt
+```
+
+### 3. Build the Docker Image
+If you're planning to use Docker, you can build the application container:
+```bash
+docker build -t kubernetes-platform-app .
+```
+
+### 4. Run the Flask Application
+To run the app locally with Flask:
+```bash
+python app.py
+```
+
+To run the app in a production setting (with Gunicorn), use the following command:
+```bash
+gunicorn app:app --bind 0.0.0.0:5000
+```
+
+### 5. Run the app in Kubernetes (Optional)
+You can also deploy the app in your Kubernetes cluster using the provided Kubernetes manifests (in the k8s/ folder).
+
+```bash
+kubectl apply -f k8s/
+```
+
+This will create the necessary Kubernetes resources, including:
+- Deployment
+- ServiceAccount
+- ClusterRole and ClusterRoleBinding
+- Service
+
+Once deployed,access the app via the NodePort service exposed by Kubernetes.
