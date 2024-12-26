@@ -1,5 +1,5 @@
 # Stage 1: Install dependencies
-FROM python:3.12-slim AS build
+FROM python:3.12-alpine AS build
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Stage 2: Runtime
-FROM python:3.12-slim AS runtime
+FROM python:3.12-alpine AS runtime
 
 WORKDIR /platform
 

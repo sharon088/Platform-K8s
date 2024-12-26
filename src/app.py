@@ -1,7 +1,9 @@
 from flask import Flask, render_template, request, jsonify
 from kubernetes import client, config
+import logging
 import re
 
+logging.basicConfig(level=logging.INFO)
 app = Flask(__name__)
 
 namespaces = {} 
@@ -16,6 +18,7 @@ def home():
         namespaces = v1.list_namespace()
         namespace_names = [ns.metadata.name for ns in namespaces.items]
     except client.exceptions.ApiException as e:
+        logging.error(f"Error fetching namespaces: {e}")
         namespace_names = []
     return render_template('index.html', namespaces=namespace_names)
 
@@ -32,6 +35,7 @@ def create_namespace():
             v1.create_namespace(namespace)
             return jsonify({'message': f'Namespace "{namespace_name}" created successfully!'})
         except client.exceptions.ApiException as e:
+            logging.error(f"Error creating namespace: {e}")
             return jsonify({'error': e.body}), 400
     return jsonify({'error': 'Invalid namespace name!'}), 400
 
@@ -44,6 +48,7 @@ def destroy_namespace():
             v1.delete_namespace(namespace_name)
             return jsonify({'message': f'Namespace "{namespace_name}" destroyed successfully!'})
         except client.exceptions.ApiException as e:
+            logging.error(f"Error deleting namespace: {e}")
             return jsonify({'error': e.body}), 404
     return jsonify({'error': 'Namespace not found!'}), 404
 
