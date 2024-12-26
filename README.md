@@ -38,3 +38,8 @@ You will also need access to a Kubernetes cluster and have the necessary permiss
 ```bash
 git clone https://github.com/your-username/kubernetes-platform-app.git
 cd kubernetes-platform-app
+
+
+### 2. Clone the repository
+Create a virtual environment (optional but recommended) and install the required Python packages:
+
