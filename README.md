@@ -80,3 +80,64 @@ This will create the necessary Kubernetes resources, including:
 - Service
 
 Once deployed,access the app via the NodePort service exposed by Kubernetes.
+
+## Usage
+
+### 1. View Namespaces
+Visit the home page to view the list of existing namespaces in the Kubernetes cluster.
+
+### 2. Create a Namespace
+Use the form on the homepage to create a new namespace.
+
+### 3. Destroy a Namespace
+Delete a namespace from the system by selecting it from the list and submitting the delete form.
+
+### 4. Deploy an Application
+Deploy a new application by providing the namespace and the Docker image name (with tag).
+
+### 5. Check Pod Status
+View the status of pods running within a selected namespace, including details of each container (running, waiting, terminated).
+
+## Kubernetes Setup
+To interact with the Kubernetes cluster from this app, make sure the following configurations are in place:
+
+### 1. ServiceAccount
+The app is configured to run with a service account (platform-app-sa) that has the necessary permissions to manage Kubernetes resources (pods, services, namespaces, deployments).
+
+### 2. RBAC
+The app uses ClusterRole and ClusterRoleBinding for access control. The ClusterRole gives the service account access to the Kubernetes resources that the app manages.
+
+### 3. Deployment
+The app is deployed as a containerized Flask app in the Kubernetes cluster with the necessary environment to interact with the cluster's API.
+
+### 4. NodePort Service
+The app exposes the application on a NodePort to make it accessible from outside the Kubernetes cluster.
+
+Example of Kubernetes YAML files:
+
+You can find the Kubernetes deployment configuration and RBAC settings in the k8s/ directory.
+Steps to deploy:
+
+```bash
+kubectl apply -f k8s/
+```
+
+This command applies all the necessary configurations, including the ClusterRole, ClusterRoleBinding, ServiceAccount, Deployment, and Service.
+
+Once deployed, access the app through the NodePort service exposed by Kubernetes.
+
+## API Endpoints
+- GET /
+Displays the list of namespaces in the cluster.
+
+- POST /create_namespace
+Create a new namespace in the Kubernetes cluster.
+
+- POST /destroy_namespace
+Destroy a namespace from the Kubernetes cluster.
+
+- POST /deploy_app
+Deploy a new app or update an existing app in a specified namespace.
+
+- GET /check_status
+Check the status of pods within a specific namespace.
