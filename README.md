@@ -113,10 +113,11 @@ The app is deployed as a containerized Flask app in the Kubernetes cluster with 
 ### 4. NodePort Service
 The app exposes the application on a NodePort to make it accessible from outside the Kubernetes cluster.
 
-Example of Kubernetes YAML files:
+### Example of Kubernetes YAML files:
 
 You can find the Kubernetes deployment configuration and RBAC settings in the k8s/ directory.
-Steps to deploy:
+
+### Steps to deploy:
 
 ```bash
 kubectl apply -f k8s/
